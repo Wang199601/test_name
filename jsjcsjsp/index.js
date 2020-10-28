@@ -1,7 +1,7 @@
 /**
  *  @Title:  index.js
  *  @Package:  static.views.tjcx.jsjcsjtj
- *  @Description:  监所基础数据统计
+ *  @Description:  监所基础数据审核
  *  @Author:  ChenYang
  *  @Email:  chenyangtongxue@163.com
  *  @Date:  2020/3/5 0005 15:10
@@ -27,7 +27,7 @@ layui.use(['layer', 'table', 'laydate'], function() {
     });
     var table1 = table.render({
         elem: '#test3',
-        url: newip + 'jgjctj/111',
+        url: newip + 'jgjctj/findJgjctjRecord',
         toolbar: '#toolbarDemo',
         height: gtSettings.table.height,
         limit: gtSettings.table.limit,
