@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监所基础数据审批</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../gtlib/gt.css" media="all">
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../publicassets/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../../publicassets/es6/babel.min.js"></script>
+    <script src="../../../settings.js"></script>
+    <script src="../../../gtlib/gt.js"></script>
+    <script src="../../../gtlib/utils-render.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+<div class="layui-row gt-layout-a">
+    <div class="layui-col-xs12">
+        <div class="layui-card">
+            <div class="layui-card-header gt-layout-card-header">
+                <span>监所基础数据审批</span>
+                <form class="layui-form gt-layout-card-header-searcharea ">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">日期</label>
+                            <div class="layui-input-inline">
+                                <input id="searchTimeInputStart" type="text" placeholder="" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline">
+                                <input id="searchTimeInputEnd" type="text" placeholder="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input type="button" class="layui-btn layui-btn-normal layui-icon"
+                                       id="chax" value="&#xe615;查询">
+                                <button id="btnHeaderReset" type="reset" class="layui-btn layui-btn-primary"
+                                        style="">重置
+                                </button>
+                                <input type="button" class="layui-btn layui-btn-normal layui-icon"
+                                       id="xz" value="&#xe654;新增">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-card-body gt-layout-card-body">
+                <table id="test3" lay-filter="test3"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="toolDemo">
+    <span class="layui-btn layui-btn-xs" lay-event="xq" >详情</span>
+    <span class="layui-btn layui-btn-normal layui-btn-xs" lay-event="xg" >修改</span>
+    <span class="layui-btn layui-btn-danger layui-btn-xs" lay-event="cx" >撤销</span>
+</script>
+</body>
+</html>
