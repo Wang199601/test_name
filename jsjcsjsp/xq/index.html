@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../../gtlib/gt.css" media="all">
+    <link rel="stylesheet" href="index.css" media="all">
+    <script src="../../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../publicassets/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../../../publicassets/es6/babel.min.js"></script>
+    <script src="../../../../settings.js"></script>
+    <script src="../../../../gtlib/gt.js"></script>
+    <script src="../../../../gtlib/utils-render.js"></script>
+    <script src="index.js"></script>
+</head>
+<body style="padding: 10px 20px;">
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 12.5%;">填报月份</td>
+        <td style="width: 12.5%;" id="tbyf"></td>
+        <td class="tableColName" style="width: 12.5%;">填报单位</td>
+        <td style="width: 12.5%;" id="dw"></td>
+        <td class="tableColName" style="width: 12.5%;">填报人</td>
+        <td style="width: 12.5%;" id="tbr"></td>
+        <td class="tableColName" style="width: 12.5%;"></td>
+        <td style="width: 12.5%;"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>押量情况(不含合设所)</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 25%;">本所日均押量(不含合设所)</td>
+        <td style="width: 25%;" id="rjyl"></td>
+        <td class="tableColName" style="width: 25%;">本所设计容量(不含合设所)</td>
+        <td style="width: 25%;" id="sjrl"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>合设监所情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 10%;">合社监所名称</td>
+        <td colspan="4" style="width: 90%;" id="hssmc"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 10%;">押量情况</td>
+        <td class="tableColName" style="width: 35%;">与本所合设监所日均押量</td>
+        <td style="width: 10%;" id="hssyjyl"></td>
+        <td class="tableColName" style="width: 35%;">与本所合设监所设计容量</td>
+        <td style="width: 10%;" id="hsssjrl"></td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="tableColName" style="width: 10%;">经费情况</td>
+        <td class="tableColName" style="width: 35%;">与本所合设监所在押人员月人均伙食费(元)</td>
+        <td style="width: 10%;" id="hssyrjhsf"></td>
+        <td class="tableColName" style="width: 35%;">与本所合设监所在押人员伙食费是否纳入地方财政预算</td>
+        <td style="width: 10%;" id="hsshsdfczys"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 35%;">与本所合设监所在押人员月人均医疗费(元)</td>
+        <td style="width: 10%;" id="hssylfy"></td>
+        <td class="tableColName" style="width: 35%;">与本所合设监所在押人员医疗费是否纳入地方财政预算</td>
+        <td style="width: 10%;" id="hssylfdfczys"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>队伍建设情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 20%;">领导班子</td>
+        <td class="tableColName" style="width: 10%;">班子人数</td>
+        <td style="width: 6%;" id="ldbzrs"></td>
+        <td class="tableColName" style="width: 10%;">本月增加</td>
+        <td style="width: 6%;" id="ldbzzj"></td>
+        <td class="tableColName" style="width: 10%;">本月减少</td>
+        <td style="width: 6%;" id="ldbzjs"></td>
+        <td class="tableColName" style="width: 10%;">主要领导职级</td>
+        <td colspan="3" style="width: 22%;" id="ldzj"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 20%;">民警</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 6%;" id="mjzs"></td>
+        <td class="tableColName" style="width: 10%;">男警警数</td>
+        <td style="width: 6%;" id="mmjs"></td>
+        <td class="tableColName" style="width: 10%;">女警警数</td>
+        <td style="width: 6%;" id="fmjs"></td>
+        <td class="tableColName" style="width: 10%;">本月增加</td>
+        <td style="width: 6%;" id="mjzj"></td>
+        <td class="tableColName" style="width: 10%;">本月减少</td>
+        <td style="width: 6%;" id="mjjs"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 10%;">职工</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 6%;" id="zgzs"></td>
+        <td class="tableColName" style="width: 10%;">本月增加</td>
+        <td style="width: 6%;" id="zgdj"></td>
+        <td class="tableColName" style="width: 10%;">本月减少</td>
+        <td style="width: 6%;" id="zgdc"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 10%;">协警</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 6%;" id="xjzs"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 10%;">其他工勤人员</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 6%;" id="qtgqryzs"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+    </tr>
+    <tr>
+        <td colspan="2" class="tableColName" style="width: 20%;">取得国家职业资格证书的心理咨询师数</td>
+        <td style="width: 6%;" id="xlzxs"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 6%;"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>医务工作情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 8%;">医务力量</td>
+        <td class="tableColName" style="width: 10%;">医务人员总数</td>
+        <td style="width: 5%;" id="ywryzs"></td>
+        <td colspan="5" class="tableColName" style="width: 40%;">兼任多个医务岗人员数(如医生同时兼任医技人员)</td>
+        <td style="width: 5%;" id="jrywryzs"></td>
+        <td class="tableColName" style="width: 10%;"></td>
+        <td style="width: 5%;"></td>
+        <td class="tableColName" style="width: 12%;"></td>
+        <td style="width: 5%;"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 8%;">医生</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 5%;" id="yszs"></td>
+        <td class="tableColName" style="width: 10%;">民警医生数</td>
+        <td style="width: 5%;" id="mjyss"></td>
+        <td class="tableColName" style="width: 10%;">职工医生数</td>
+        <td style="width: 5%;" id="zgyss"></td>
+        <td class="tableColName" style="width: 10%;">聘用医生数</td>
+        <td style="width: 5%;" id="pyyss"></td>
+        <td class="tableColName" style="width: 10%;">驻派医生数</td>
+        <td style="width: 5%;" id="pzyss"></td>
+        <td class="tableColName" style="width: 12%;">具有职业资格数</td>
+        <td style="width: 5%;" id="jyzyzgyss"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 8%;">护士</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 5%;" id="hszs"></td>
+        <td class="tableColName" style="width: 10%;">民警护士数</td>
+        <td style="width: 5%;" id="mjhss"></td>
+        <td class="tableColName" style="width: 10%;">职工护士数</td>
+        <td style="width: 5%;" id="zghss"></td>
+        <td class="tableColName" style="width: 10%;">聘用护士数</td>
+        <td style="width: 5%;" id="pyhss"></td>
+        <td class="tableColName" style="width: 10%;">驻派护士数</td>
+        <td style="width: 5%;" id="pzhss"></td>
+        <td class="tableColName" style="width: 12%;">具有职业资格数</td>
+        <td style="width: 5%;" id="jyzyzghss"></td>
+    </tr>
+    <tr>
+        <td class="tableColName" style="width: 8%;">医技人员</td>
+        <td class="tableColName" style="width: 10%;">总数</td>
+        <td style="width: 5%;" id="yjzs"></td>
+        <td class="tableColName" style="width: 10%;">民警医技数</td>
+        <td style="width: 5%;" id="mjyjs"></td>
+        <td class="tableColName" style="width: 10%;">职工医技数</td>
+        <td style="width: 5%;" id="zgyjs"></td>
+        <td class="tableColName" style="width: 10%;">聘用医技数</td>
+        <td style="width: 5%;" id="pyyjs"></td>
+        <td class="tableColName" style="width: 10%;">驻派医技数</td>
+        <td style="width: 5%;" id="pzyjs"></td>
+        <td class="tableColName" style="width: 12%;">具有职业资格数</td>
+        <td style="width: 5%;" id="jyzyzgyjs"></td>
+    </tr>
+    <tr>
+        <td rowspan="4" class="tableColName" style="width: 8%;">开展情况</td>
+        <td colspan="3" class="tableColName" style="width: 25%;">落实医生24小时值班</td>
+        <td style="width: 5%;" id="lszb"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">到医院跟班学习人次</td>
+        <td style="width: 5%;" id="gbxx"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">医院医生来所坐诊人次</td>
+        <td style="width: 5%;" id="lszz"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 25%;">医疗机构许可证</td>
+        <td style="width: 5%;" id="yljgxkz"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">所内门诊人次</td>
+        <td style="width: 5%;" id="snmz"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">出所治疗人次</td>
+        <td style="width: 5%;" id="cszl"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 25%;">医院急救通道</td>
+        <td style="width: 5%;" id="yyjjtd"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">住院人次</td>
+        <td style="width: 5%;" id="zy"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">因病危及生命的在押人员变更强制措施数</td>
+        <td style="width: 5%;" id="bgqzcs"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 25%;">在社会医院设立监管专用病房</td>
+        <td style="width: 5%;" id="jgzybf"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">在押人员体检人次</td>
+        <td style="width: 5%;" id="zyrytj"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">拒收因病不宜羁押人员数</td>
+        <td style="width: 5%;" id="jsrys"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>后勤保障情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td rowspan="2" class="tableColName" style="width: 8%;">经费情况</td>
+        <td colspan="5" class="tableColName" style="width: 40%;">本所在押人员月人均伙食费(元)(不含合设所)</td>
+        <td style="width: 5%;" id="yrjhsf"></td>
+        <td colspan="5" class="tableColName" style="width: 40%;">本所在押人员伙食费是否纳入地方财政预算(不含合设所)</td>
+        <td style="width: 5%;" id="hsdfczys"></td>
+    </tr>
+    <tr>
+        <td colspan="5" class="tableColName" style="width: 40%;">本所在押人员月人均医疗费(元)(不含合设所)</td>
+        <td style="width: 5%;" id="ylfy"></td>
+        <td colspan="5" class="tableColName" style="width: 40%;">本所在押人员医疗费是否纳入地方财政预算(不含合设所)</td>
+        <td style="width: 5%;" id="ylfdfczys"></td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="tableColName" style="width: 8%;">其他情况</td>
+        <td colspan="3" class="tableColName" style="width: 25%;">完成监控数字化改造</td>
+        <td style="width: 5%;" id="jkszh"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">监控图像分辨率达到2CIF以上</td>
+        <td style="width: 5%;" id="jkfbl"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">囚车正常使用</td>
+        <td style="width: 5%;" id="qczcsy"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 25%;">监控实现全覆盖无死角</td>
+        <td style="width: 5%;" id="jkqfg"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">监控图像储存时间不少于15天</td>
+        <td style="width: 5%;" id="jkccsj"></td>
+        <td colspan="3" class="tableColName" style="width: 25%;">配备囚车</td>
+        <td style="width: 5%;" id="pbqc"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>监内管理情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 8%;">重点人员</td>
+        <td class="tableColName" style="width: 18%;">在押重要案犯数</td>
+        <td style="width: 5%;" id="zyzyaf"></td>
+        <td class="tableColName" style="width: 18%;">重点监控对象数</td>
+        <td style="width: 5%;" id="zdgkdx"></td>
+        <td class="tableColName" style="width: 18%;">在押死刑犯数</td>
+        <td style="width: 5%;" id="zysxf"></td>
+        <td class="tableColName" style="width: 18%;">可能判处15年以上徒刑人数</td>
+        <td style="width: 5%;" id="knpc"></td>
+    </tr>
+    <tr>
+        <td rowspan="3" class="tableColName" style="width: 8%;">狱情动态</td>
+        <td class="tableColName" style="width: 18%;">排查发现隐患数</td>
+        <td style="width: 5%;" id="pcfxyh"></td>
+        <td class="tableColName" style="width: 18%;">设施隐患数</td>
+        <td style="width: 5%;" id="ssyh"></td>
+        <td class="tableColName" style="width: 18%;">管理隐患数</td>
+        <td style="width: 5%;" id="glyh"></td>
+        <td class="tableColName" style="width: 18%;"></td>
+        <td style="width: 5%;"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 41%;">隐患已整改数</td>
+        <td style="width: 5%;" id="yhzg"></td>
+        <td colspan="3" class="tableColName" style="width: 41%;">处理欺压,打架等严重违规事件起数</td>
+        <td style="width: 5%;" id="clyzwg"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="tableColName" style="width: 41%;">发现企图逃脱,自杀等事故苗头人次数</td>
+        <td style="width: 5%;" id="fxsgmt"></td>
+        <td colspan="3" class="tableColName" style="width: 41%;">有效制止事故苗头和重大事件起数</td>
+        <td style="width: 5%;" id="yxzz"></td>
+    </tr>
+</table>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>教育转化情况</legend>
+</fieldset>
+<table class="layui-table" style="width: 100%;">
+    <tr>
+        <td class="tableColName" style="width: 8%;">管教力量</td>
+        <td class="tableColName" style="width: 18%;">管教民警数</td>
+        <td style="width: 5%;" id="gjmj"></td>
+        <td class="tableColName" style="width: 18%;">心理疏导人次</td>
+        <td style="width: 5%;" id="xlsd"></td>
+        <td class="tableColName" style="width: 18%;"></td>
+        <td style="width: 5%;"></td>
+        <td class="tableColName" style="width: 18%;"></td>
+        <td style="width: 5%;"></td>
+    </tr>
+</table>
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>审批确定</legend>
+</fieldset>
+
+
+<form class="layui-form" action="">
+  
+
+    <div class="layui-form-item">
+      <label class="layui-form-label tableColName">选择框</label>
+      <div class="layui-input-block">
+        <select name="city" lay-verify="required">
+            <option value=""></option>
+            <option value="1">通过</option>
+            <option value="2">不通过</option>
+        </select>
+      </div>
+    </div>
+   
+  </form>
+
+
+</body>
+</html>
