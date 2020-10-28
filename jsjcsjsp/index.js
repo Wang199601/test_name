@@ -27,7 +27,7 @@ layui.use(['layer', 'table', 'laydate'], function() {
     });
     var table1 = table.render({
         elem: '#test3',
-        url: newip + 'jgjctj/findJgjctjRecord',
+        url: newip + 'jgjctj/111',
         toolbar: '#toolbarDemo',
         height: gtSettings.table.height,
         limit: gtSettings.table.limit,
