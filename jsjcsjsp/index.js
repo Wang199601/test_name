@@ -1,7 +1,7 @@
 /**
  *  @Title:  index.js
  *  @Package:  static.views.tjcx.jsjcsjtj
- *  @Description:  监所基础数据审核
+ *  @Description:  监所基础数据统计
  *  @Author:  ChenYang
  *  @Email:  chenyangtongxue@163.com
  *  @Date:  2020/3/5 0005 15:10
