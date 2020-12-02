@@ -1,11 +1,11 @@
 <script type="text/html" id="typeTpl">
     {{#  if(d.type == 0){ }}
-    公安
+    鍏畨
     {{#  } else if(d.type == 1) { }}
-    律师
+    寰嬪笀
     {{#  } else if(d.type == 2) { }}
-    检察院
+    妫�瀵熼櫌
     {{#  } else if(d.type == 3) { }}
-    法院
+    娉曢櫌
     {{#  } }}
 </script>
