@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>upload模块快速使用</title>
+		<link rel="stylesheet" href="js/layui/css/layui.css" />
+	</head>
+<style>
+	#layui-upload-drag img{
+		max-width: 196px;
+		max-height:55px
+	}
+</style>
+	<body>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label gt-bt" style="text-align: left">图片上传</label>
+			<div class="layui-input-block" id="test">
+				<div class="layui-col-xs6" id="test1">
+					<i class="layui-icon">&#xe624;</i>
+				</div>
+				<!--<div class="layui-upload-drag" >
+						<img src="" alt="上传成功后渲染" style="max-width: 196px;max-height:55px">
+				</div>-->
+			</div>
+		</div>
+		<button type="button" class="layui-btn" id="testListAction">
+	  <i class="layui-icon">&#xe67c;</i>上传图片到服务器
+	</button>
+		<script type="text/javascript" src="js/layui/layui.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script>
+			layui.use('upload', function() {
+				var upload = layui.upload;
+				upload.render({
+					elem: '#test1',
+					url: '/api/upload/',
+					auto: false, //选择文件后不自动上传
+					bindAction: '#testListAction', //指向一个按钮触发上传
+					multiple: 'true', //允许多张图片上传
+					number: '3', //最多上传图片
+					done: function(res) {
+						//上传完毕回调
+						console.log("上传成功");
+					},
+					error: function() {
+						//请求异常回调
+						console.log("上传失败")
+					},
+					choose: function(obj) {
+						//将每次选择的文件追加到文件队列
+						var files = obj.pushFile();
+						//预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
+
+						var imgarr = [];
+						obj.preview(function(index, file, result) {
+							console.log(index); //得到文件索引
+							console.log(file); //得到文件对象
+							//console.log(result); //得到文件base64编码，比如图片
+							//imgarr.push(result);
+							var update = document.getElementById('test');
+							var img = document.createElement("img");
+							var div = document.createElement("div");
+							div.setAttribute("class", "layui-upload-drag");
+							img.setAttribute("id", "newImg");
+							img.setAttribute("style", "width: 80px;height:80px");
+							img.src = result;
+							div.appendChild(img);　　　　
+							update.appendChild(div);　　　　
+			
+							
+							//$('#id_upload_img').attr('src', result); //图片链接（base64）
+
+							//obj.resetFile(index, file, '123.jpg'); //重命名文件名，layui 2.3.0 开始新增
+
+							//这里还可以做一些 append 文件列表 DOM 的操作
+
+							//obj.upload(index, file); //对上传失败的单个文件重新上传，一般在某个事件中使用
+							//delete files[index]; //删除列表中对应的文件，一般在某个事件中使用
+						});
+						console.log(imgarr);
+
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>
