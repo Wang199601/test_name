@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=utf-8>
+		<meta name=viewport content-text="width=device-width,initial-scale=1,user-scalable=no">
+		<meta http-equiv=X-UA-Compatible content-text="IE=Edge,chrome=1">
+
+		<link rel="stylesheet" href="js/layui/css/layui.css" />
+		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+		<link rel=stylesheet href="css/common.css">
+		<!--<link rel=stylesheet href="css/right-suspension-panel.css">-->
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+
+	</head>
+
+	<body style="background-color: #92B8B1;">
+
+		<style>
+			.right-suspension {
+				position: fixed;
+				right: 20px;
+				bottom: 400px;
+				z-index: 300;
+				width: 60px
+			}
+			
+			.right-suspension:hover .upper-btn {
+				display: block;
+			}
+			
+			.lower-btn {
+				display: block;
+				width: 60px;
+				height: 60px;
+				color: #0989c5;
+				font-size: 40px;
+				cursor: pointer;
+			}
+			
+			.lower-btn {
+				position: relative;
+				margin-top: 5px;
+				text-align: center;
+				background-color: transparent;
+				-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1)
+			}
+			
+			.upper-btn {
+				display: none;
+				width: 60px;
+				height: 60px;
+				color: #0989c5;
+				text-align: center;
+				font-size: 20px;
+				cursor: pointer;
+				-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			}
+			
+			.upper-btn i {
+				display: inline-block;
+				width: 60px;
+				height: 60px;
+				line-height: 60px;
+				font-size: 40px;
+				color: #0989c5;
+				background-color: #fff;
+				border-radius: 50%;
+			}
+			
+			.lower-btn i {
+				display: inline-block;
+				width: 60px;
+				height: 60px;
+				line-height: 60px;
+				font-size: 40px;
+				color: #fff;
+				background-color: #0989c5;
+				border-radius: 50%;
+			}
+			
+			.content-text {
+				opacity: 1;
+				z-index: -9;
+				right: -500px;
+				display: none;
+				position: absolute;
+				right: 60px;
+				bottom: 10px;
+				border: 1px solid #666666;
+				background: #fff;
+				-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+				width: 300px
+			}
+			
+			.content-text li {
+				*zoom: 1;
+				cursor: pointer
+			}
+			
+			.content-text li :hover {
+				background: #f3f5fb;
+			}
+			
+			.content-text .icon-box,
+			.content-text .text-box {
+				float: left;
+				width: 215px;
+				height: 60px;
+				cursor: pointer;
+			}
+			
+			.content-text .icon-box {
+				width: 78px;
+				line-height: 55px;
+				text-align: center
+			}
+			
+			.content-text .icon-box i {
+				color: #0989c5;
+				font-size: 30px
+			}
+			
+			.content-text .text-box p {
+				margin-top: 10px;
+				font-size: 16px;
+				color: #666666;
+				line-height: 29px;
+				cursor: pointer;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden
+			}
+			
+			.upper:hover .content-text {
+				display: block;
+				opacity: 1;
+			}
+		</style>
+
+		<div class="right-suspension">
+
+			<div class="upper">
+				<div class="upper-btn"><i class="layui-icon">&#xe611;</i> </div>
+				<div class="content-text">
+					<ul>
+						<li>
+							<div class="icon-box"><i class="layui-icon">&#xe626;</i></div>
+							<div class="text-box">
+								<p>专家咨询</p>
+							</div>
+						</li>
+
+						<li id="add">
+							<div class="icon-box"><i class="layui-icon">&#xe63c;</i></div>
+							<div class="text-box">
+								<p>问题反馈</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="lower">
+				<a class="lower-btn"><i class="layui-icon">&#xe653;</i>
+				</a>
+
+			</div>
+
+		</div>
+		<script type="text/javascript" src="js/layui/layui.js"></script>
+		<script>
+			layui.use(['form', 'layer'], function() {
+						var form = layui.form,
+							layer = layui.layer;
+						});
+						$("#add").on("click", function() {
+							layer.open({
+								skin: 'layui-layer-molv',
+								type: 2,
+								title: '问题反馈',
+								area: ['550px', '550px'],
+								shade: 0.8, // 遮罩层透明度
+								id: 'LAY_layuipro', //设定一个id，防止重复弹出
+								resize: false, //是否允许拉伸
+								btn: ['提交', '关闭'],
+								moveType: 1, //拖拽模式，0或者1
+								content: 'bd/index.html',
+								yes: function(index, layero) { // 确认按钮回调方法,两个参数分别为当前层索引、当前层DOM对象
+									var submitID = 'LAY-back-submit'; // 1.提交按钮ID
+									var submitFilterID = 'LAY-front-submit'; // 2.提交按钮lay-filter
+									
+									var submit = layero.find('iframe').contents().find('#' + submitID); // 3.获取子页面按钮
+									console.log("submit="+submit);
+									var iframeWindow = layero.find('iframe')[0].contentWindow; // 4.获取子页面iframe对象
+									// 5.监听子页面提交事件
+									iframeWindow.layui.form.on('submit(' + submitFilterID + ')', function(data) {
+										// 5.1新增用户
+										addUser(index, data);
+									});
+									// 6.触发子页面点击事件
+									submit.trigger('click');
+								}
+							});
+						});
+
+								// 新增用户
+								function addUser(index, formData) {
+									console.log(formData.field);
+									// 加载提示
+									/*var loadingMsg = layer.msg('数据请求中,请稍候...', {
+										icon: 16,
+										scrollbar: false,
+										time: 0,
+										shade: [0.8, '#393D49']
+									});*/
+									// form请求地址
+									//var formUrl = projectName + "sysUser/add";
+								/*	$.ajax({
+										type: 'POST',
+										async: false, // 默认异步true,false表示同步
+										url: formUrl, // 请求地址
+										dataType: 'json', // 服务器返回数据类型
+										data: formData.field, //获取提交的表单字段
+										success: function(data) {
+											layer.close(loadingMsg); // 关闭提示层
+											if(data.code == '1002') {
+												// 信息提示
+												layer.alert(data.message, {
+													skin: 'layui-layer-molv',
+													closeBtn: 0,
+													icon: 1
+												}, function(alertIndex) {
+													layer.close(alertIndex) // 关闭当前alert
+													layer.close(index); // 关闭弹出层open
+													
+													  /*  刷新表格数据,如果使用的是layer的toolbar工具栏,
+													    刷新后按钮绑定将会失效,解决方案请看文章底部链接
+													
+													reloadTable();
+												});
+											} else {
+												layer.alert(data.message, {
+													icon: 5
+												});
+											}
+										},
+										error: function(XMLHttpRequest, textStatus, e) {
+											layer.close(loadingMsg);
+											layer.msg('数据请求发生异常,请稍后重试', {
+												icon: 16,
+												scrollbar: false
+											});
+										}
+									});*/
+								}
+
+						/*var awards = "";
+				layui.use('layer', function(){
+				  var layer = layui.layer;
+				}); 
+			function confirmUpdateAward(i) {
+				console.log("!!!!")
+				layer.open({
+					type: 1,
+					closeBtn: false,
+					shift: 7,
+					shadeClose: true,
+					content: "<div style='width:350px;'><div style='width:320px;margin-left: 3%;' class='form-group has-feedback'><p>请输入奖项名称</p><input id='awardName' class='form-control' type='text' name='awardName' value=''/></div>" +
+						"<div style='width:320px;margin-left: 3%;' class='form-group has-feedback'><p>请输入奖项描述</p><input id='awardDescription' class='form-control' type='text' name='awardDescription' value=''/></div>" +
+						"<div style='width:320px;margin-left: 3%;' class='form-group has-feedback'><p>请输入获奖人数</p><input id='awardUserCount' class='form-control' type='number' name='awardUserCount' value=''/></div>" +
+						"<div style='width:320px;margin-left: 3%;' class='form-group has-feedback'><p>请输入奖项类别</p><input id='awardKind' class='form-control' type='text' name='awardKind' value=''/>" +
+						"<button style='margin-top:5%;' type='button' class='btn btn-block btn-success btn-lg' onclick='updateAward()'>提交</button></div>"
+				});
+			}
+*/
+						/*	function updateAward(awardId) {
+
+								var awardUserCount = $("#awardUserCount").val();
+								if(awardUserCount * 1 > 8888 || awardUserCount * 1 < 1) {
+									layer.msg('人数必须是1到8888', {
+										time: 500, //0.5s后自动关闭
+										// btn: ['明白了', '知道了']
+									});
+								} else {
+									var awardName = $("#awardName").val();
+									var awardDescription = $("#awardDescription").val();
+									var awardKind = $("#awardKind").val();
+									$.ajax({
+										type: "post",
+										url: getContextPath() + "/award/updateAward",
+										dataType: 'json',
+										data: {
+											"awardId": awardId,
+											"awardName": awardName,
+											"awardDescription": awardDescription,
+											"awardUserCount": awardUserCount,
+											"awardKind": awardKind
+										},
+										success: function(data) {
+											var updateSuccess = data.data;
+											if(updateSuccess) {
+												layer.msg('修改成功', {
+													time: 500, //0.5s后自动关闭
+													// btn: ['明白了', '知道了']
+												});
+												refreshPage();
+											} else {
+												layer.msg('修改失败', {
+													time: 500, //20s后自动关闭
+													// btn: ['明白了', '知道了']
+												});
+											}
+										}
+									});
+									layer.closeAll();
+								}
+							}*/
+		</script>
+	</body>
+
+</html>

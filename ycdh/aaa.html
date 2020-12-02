@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset=" utf-8">
+<meta name="author" content="http://www.maomao365.com/" />
+<title>猫猫教程(www.maomao365.com)
+ --css规则对象  setProperty方法举例说明
+</title>
+<style>
+#con {
+  width:250px;
+  height:130px;
+  line-height:130px;
+  text-align:center;
+}
+</style>
+<script>
+window.onload = function () {
+  let d = document.getElementById("con");
+       //d.style 返回一个 CSSStyleDeclaration对象 
+      d.style.setProperty("background-color", "green");
+      d.style.setProperty("color", "white", "important");
+}
+</script>
+</head>
+<body>
+<p>
+ maomao365.com <br />
+ setProperty方法举例说明
+</p>
+<hr />
+<div id="con">猫猫教程--setProperty方法测试</div>
+</body>
+</html>
