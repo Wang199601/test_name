@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1">
+
+	<title>CSS网页悬浮在线人工客服代码</title>
+	<link rel=stylesheet href="css/common.css">
+	<link rel="stylesheet" href="js/layui/css/layui.css" />
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<style>
+		.online-consultation {
+			display: none;
+			position: fixed;
+			right: 20px;
+			bottom: 50%;
+			z-index: 300;
+			width: 60px
+		}
+
+		.on-line:hover .on-line-show {
+			display: block;
+			opacity: 1;
+		}
+
+
+		.on-line-btn {
+			display: block;
+			width: 60px;
+			height: 60px;
+			color: #0989c5;
+			text-align: center;
+			font-size: 20px;
+			cursor: pointer;
+			-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+		}
+
+
+		.on-line-btn i {
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			line-height: 60px;
+			font-size: 40px;
+			color: #0989c5;
+			background-color: #fff
+		}
+
+		.on-line-show {
+			opacity: 0;
+			z-index: -9;
+			right: -500px;
+			position: absolute;
+			right: 70px;
+			bottom: 0;
+			background: #fff;
+			-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			width: 300px
+		}
+
+		.on-line-show li {
+			*zoom: 1;
+			cursor: pointer
+		}
+
+		.on-line-show li:hover {
+			background: #f3f5fb;
+		}
+		.on-line-show li:after,
+		.on-line-show li:before {
+			content: "";
+			display: block;
+			clear: both;
+			height: 0;
+			line-height: 0;
+			visibility: hidden
+		}
+		.on-line-show .icon-box,
+		.on-line-show .text-box {
+			float: left;
+			width: 215px;
+			height: 90px;
+			cursor: pointer
+		}
+
+		.on-line-show .icon-box {
+			width: 78px;
+			line-height: 90px;
+			text-align: center
+		}
+
+		.on-line-show .icon-box i {
+			color: #0989c5;
+			font-size: 30px
+		}
+
+		.on-line-show .text-box h5 {
+			margin-top: 10px;
+			font-size: 16px;
+			color: #03004c;
+			line-height: 24px;
+			cursor: pointer;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden
+		}
+
+		.on-line-show .text-box p {
+			margin-top: 10px;
+			max-height: 36px;
+			overflow: hidden;
+			line-height: 18px;
+			font-size: 12px;
+			color: #666;
+			cursor: pointer
+		}
+
+		.push-button {
+			position: relative
+		}
+
+
+
+		.push-button-btn {
+			position: relative;
+			margin-top: 5px;
+			text-align: center;
+			background-color: transparent;
+			display: block;
+			width: 60px;
+			height: 60px;
+			margin-bottom: 5px;
+			color: #0989c5;
+			font-size: 40px;
+			cursor: pointer;
+			-webkit-transition: all .25s ease;
+			-moz-transition: all .25s ease;
+			transition: all .25s ease;
+			-webkit-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			-moz-box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1);
+			box-shadow: 0 0 10px 0 rgba(20, 34, 67, .1)
+		}
+
+		.push-button-btn span {
+			display: none;
+			position: absolute;
+			top: 25px;
+			left: 25px;
+			width: 30px;
+			line-height: 15px;
+			font-size: 12px;
+			text-align: center
+		}
+
+		.push-button-btn:hover {
+			color: #fff
+		}
+
+
+	</style>
+</head>
+
+<body>
+
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+		<legend>动画过程演示</legend>
+	  </fieldset>
+	   
+	  <ul class="site-doc-icon site-doc-anim">
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-up">从最底部往上滑入</div>
+		  <div class="code">layui-anim-up</div>
+		</li>
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-upbit">微微往上滑入</div>
+		  <div class="code">layui-anim-upbit</div>
+		</li>
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-scale">平滑放大</div>
+		  <div class="code">layui-anim-scale</div>
+		</li>
+		 <li>
+		  <div class="layui-anim" data-anim="layui-anim-scaleSpring">弹簧式放大</div>
+		  <div class="code">layui-anim-scaleSpring</div>
+		</li>
+	  </ul>
+	  <ul class="site-doc-icon site-doc-anim">
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-fadein">渐现</div>
+		  <div class="code">layui-anim-fadein</div>
+		</li>
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-fadeout">渐隐</div>
+		  <div class="code">layui-anim-fadeout</div>
+		</li>
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-rotate">360度旋转</div>
+		  <div class="code">layui-anim-rotate</div>
+		</li>
+		<li>
+		  <div class="layui-anim" data-anim="layui-anim-rotate layui-anim-loop">循环动画</div>
+		  <div class="code">追加：layui-anim-loop</div>
+		</li>
+	  </ul>          
+					 
+				
+
+</body>
+
+</html>
